@@ -52,7 +52,7 @@ public class PreRequisitesChecker extends CordovaPlugin {
     }
 	
 	
-	if (action.equals("isConformingToPreRequisites")) {
+	 if (action.equals("isConformingToPreRequisites")) {
       this.isConformingToPreRequisites(callbackContext);
 
       return true;
@@ -143,7 +143,7 @@ public class PreRequisitesChecker extends CordovaPlugin {
     }
   }
 
-  private void openApplicationMarketPage(String packagename, CallbackContext callbackContext) throws android.content.ActivityNotFoundException {
+  public void openApplicationMarketPage(String packagename, CallbackContext callbackContext) throws android.content.ActivityNotFoundException {
     Context context = this.cordova.getActivity().getApplicationContext();
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packagename));
 

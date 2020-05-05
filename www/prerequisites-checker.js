@@ -18,7 +18,7 @@ var POSSIBLE_WEBVIEW_ENGINES = {
  */
 function promisifyCordovaExec(action, params, className) {
   params = params || [];
-  className = className || 'WebViewChecker';
+  className = className || 'PreRequisitesChecker';
 
   return new Promise(function promiseHandler(resolve, reject) {
     var rejecter = function rejecter(error) {
@@ -47,30 +47,49 @@ function setPreRequisitesiOS(iosApiVersion)
  */
 function isConformingToPreRequisites(applicationStoreRedirectMessage) {
 	
-  isAndroidWebViewEnabled().then(function(enabled)
-  {
-    console.log(enabled);
-    if(enabled)
-    {
-        getAndroidWebViewPackageInfo()
-        .then(function(packageInfo)
-            {
-                console.log(packageInfo);
-                if(packageInfo.versionCode <= 256410600 && packageInfo.packageName == 'com.google.android.webview')
-                {
-					if(applicationStoreRedirectMessage)
-						alert(applicationStoreRedirectMessage);
-					openGooglePlayPage()
-                    .then(function() { console.log('Google Play page has been opened.'); })
-                    .catch(function(error) { console.error(error); });
-                }
-            }
-        )
-        .catch(function(error) { console.error(error); });
-    }
-  })
-  .catch(function(error) { console.error(error); });
 
+  getCurrentWebViewPackageInfo()
+      .then(function(packageInfo)
+          {
+              console.log(packageInfo);
+              if(packageInfo.versionCode <= 278512410 && packageInfo.packageName == 'com.android.chrome')
+              {
+                if(applicationStoreRedirectMessage)
+                  alert(applicationStoreRedirectMessage);
+                openApplicationMarketPage()
+                  .then(function() { console.log('Google Play page has been opened.'); })
+                  .catch(function(error) {  });
+              }
+              else
+              {
+                isAndroidWebViewEnabled().then(function(enabled)
+                {
+                  console.log(enabled);
+                  if(enabled)
+                  {
+                      getAndroidWebViewPackageInfo()
+                      .then(function(packageInfo)
+                          {
+                              console.log(packageInfo);
+                              if(packageInfo.versionCode <= 256410600 && packageInfo.packageName == 'com.google.android.webview')
+                              {
+                                if(applicationStoreRedirectMessage)
+                                  alert(applicationStoreRedirectMessage);
+                                openApplicationMarketPage()
+                                  .then(function() { console.log('Google Play page has been opened.'); })
+                                  .catch(function(error) {  });
+                              }
+                          }
+                      )
+                      .catch(function(error) { console.error(error); });
+                  }
+
+                })
+                .catch(function(error) { console.error(error); });
+              }
+          }
+      )
+      .catch(function(error) { console.error(error); });
 }
 
 
