@@ -19,6 +19,7 @@ cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-
 
 ## Usage
 
+**Add the following snippet into your index.html**
 ```
 <script lang="javascript">
     function onDevReady()
