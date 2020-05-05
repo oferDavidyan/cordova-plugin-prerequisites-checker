@@ -1,7 +1,5 @@
 # cordova-plugin-prerequisites-checker
 
-[![NPM version](https://img.shields.io/npm/v/cordova-plugin-webview-checker.svg)][npm-package-url]
-
 Cordova plugin that checks the required prerequisites in order to run corodova app in the hosting cotainer (iOS, Android).
 
 The idea for the project started due to a problematic and non-expected behavoir of Cordova app in different configurations of the same OS.
