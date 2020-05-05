@@ -25,7 +25,7 @@ cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-
     function onDevReady()
     {
         plugins.prerequisitesChecker.setPreRequisitesAndroid("24");
-        plugins.prerequisitesChecker.isConformingToPreRequisites("על מנת להפעיל את אפליקציית NOW\nיש להתקין עדכון למערכת ההפעלה שלכם\nאנחנו מעבירים אתכם לחנות האפליקציות\nבגמר ביצוע העדכון יש להפעיל את האפליקציה מחדש");
+        plugins.prerequisitesChecker.isConformingToPreRequisites("Ooopps, its seems something is missing, please install from application market");
      }
     document.addEventListener('deviceready', onDevReady, false);
 </script>
