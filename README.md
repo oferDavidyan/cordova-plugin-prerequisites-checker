@@ -14,7 +14,7 @@ a great thanks to the contribution of ideas to cordova-plugin-webview-checker at
 ## Installation
 
 ```
-cordova plugin add cordova-plugin-prerequisites-checker
+cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-checker.git
 ```
 
 ## Usage
