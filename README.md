@@ -19,6 +19,18 @@ cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-
 
 ## Usage
 
+```
+<script lang="javascript">
+    function onDevReady()
+    {
+        plugins.prerequisitesChecker.setPreRequisitesAndroid("24");
+        plugins.prerequisitesChecker.isConformingToPreRequisites("על מנת להפעיל את אפליקציית NOW\nיש להתקין עדכון למערכת ההפעלה שלכם\nאנחנו מעבירים אתכם לחנות האפליקציות\nבגמר ביצוע העדכון יש להפעיל את האפליקציה מחדש");
+     }
+    document.addEventListener('deviceready', onDevReady, false);
+</script>
+```
+
+
 **tl,dr;**
 
 - use ES5 code only
