@@ -66,7 +66,7 @@ Every Android release since Android 4.4 (KitKat) comes pre-installed with Androi
 Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
 
 ```js
-plugins.webViewChecker.setPreRequisitesAndroid("24");
+plugins.preRequisitesChecker.setPreRequisitesAndroid("24");
 ```
 
 --- 
@@ -77,7 +77,7 @@ plugins.webViewChecker.setPreRequisitesAndroid("24");
 Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
 
 ```js
-plugins.webViewChecker.setPreRequisitesiOS("13.4.1");
+plugins.preRequisitesChecker.setPreRequisitesiOS("13.4.1");
 ```
 --- 
 
@@ -89,12 +89,12 @@ plugins.webViewChecker.setPreRequisitesiOS("13.4.1");
 Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
 
 ```js
-plugins.webViewChecker.isConformingToPreRequisites()
+plugins.preRequisitesChecker.isConformingToPreRequisites()
   .then(function(enabled) { console.log(enabled); })
   .catch(function(error) { console.error(error); });
 ```
 
-> **Note:** Technically all Android phone has the Android System WebView installed but when it's disabled it will default to the version shipped with the phone. So you should determine a minimum required version and use `plugins.webViewChecker.getCurrentWebViewPackageInfo()` function to check if the installed version is higher or not.
+> **Note:** Technically all Android phone has the Android System WebView installed but when it's disabled it will default to the version shipped with the phone. So you should determine a minimum required version and use `plugins.preRequisitesChecker.getCurrentWebViewPackageInfo()` function to check if the installed version is higher or not.
 
 --- 
 
@@ -104,7 +104,7 @@ plugins.webViewChecker.isConformingToPreRequisites()
 A helper function to open the Google Play page or Apple App Store the specified package name / application name.
 
 ```js
-plugins.webViewChecker.openGooglePlayPage()
+plugins.preRequisitesChecker.openGooglePlayPage()
   .then(function() { console.log('Google Play page has been opened.'); })
   .catch(function(error) { console.error(error); });
 ```
