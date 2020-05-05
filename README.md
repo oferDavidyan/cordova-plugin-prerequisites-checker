@@ -104,7 +104,7 @@ plugins.preRequisitesChecker.isConformingToPreRequisites()
 A helper function to open the Google Play page or Apple App Store the specified package name / application name.
 
 ```js
-plugins.preRequisitesChecker.openGooglePlayPage()
+plugins.preRequisitesChecker.openApplicationMarketPage()
   .then(function() { console.log('Google Play page has been opened.'); })
   .catch(function(error) { console.error(error); });
 ```
