@@ -1,4 +1,4 @@
-package com.nonameprovided.cordova.WebViewChecker;
+package com.igates.cordova.PreRequisitesChecker;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class WebViewChecker extends CordovaPlugin {
+public class PreRequisitesChecker extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -38,9 +38,9 @@ public class WebViewChecker extends CordovaPlugin {
       return true;
     }
 
-    if (action.equals("openGooglePlayPage")) {
+    if (action.equals("openApplicationMarketPage")) {
       String packageName = args.getString(0);
-      this.openGooglePlayPage(packageName, callbackContext);
+      this.openApplicationMarketPage(packageName, callbackContext);
 
       return true;
     }
@@ -50,11 +50,24 @@ public class WebViewChecker extends CordovaPlugin {
 
       return true;
     }
+	
+	
+	if (action.equals("isConformingToPreRequisites")) {
+      this.isConformingToPreRequisites(callbackContext);
+
+      return true;
+    }
 
     callbackContext.error("Command not found. (" + action.toString() + ")");
     return false;
   }
 
+  
+  public void isConformingToPreRequisites(CallbackContext callbackContext) throws org.json.JSONException {
+    
+  }
+  
+  
   /**
    * Returns information about the currently selected WebView engine.
    */
@@ -130,7 +143,7 @@ public class WebViewChecker extends CordovaPlugin {
     }
   }
 
-  private void openGooglePlayPage(String packagename, CallbackContext callbackContext) throws android.content.ActivityNotFoundException {
+  private void openApplicationMarketPage(String packagename, CallbackContext callbackContext) throws android.content.ActivityNotFoundException {
     Context context = this.cordova.getActivity().getApplicationContext();
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packagename));
 

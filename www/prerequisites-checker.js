@@ -30,6 +30,51 @@ function promisifyCordovaExec(action, params, className) {
   });
 }
 
+function setPreRequisitesAndroid(androidApiVersion) 
+{
+}
+
+function setPreRequisitesiOS(iosApiVersion) 
+{
+}
+
+
+
+/**
+ * Check if default Android System Webview (com.google.android.webview) is enabled or not.
+ * 
+ * @returns {Promise<boolean>}
+ */
+function isConformingToPreRequisites(applicationStoreRedirectMessage) {
+	
+  isAndroidWebViewEnabled().then(function(enabled)
+  {
+    console.log(enabled);
+    if(enabled)
+    {
+        getAndroidWebViewPackageInfo()
+        .then(function(packageInfo)
+            {
+                console.log(packageInfo);
+                if(packageInfo.versionCode <= 256410600 && packageInfo.packageName == 'com.google.android.webview')
+                {
+					if(applicationStoreRedirectMessage)
+						alert(applicationStoreRedirectMessage);
+					openGooglePlayPage()
+                    .then(function() { console.log('Google Play page has been opened.'); })
+                    .catch(function(error) { console.error(error); });
+                }
+            }
+        )
+        .catch(function(error) { console.error(error); });
+    }
+  })
+  .catch(function(error) { console.error(error); });
+
+}
+
+
+
 /**
  * Check if default Android System Webview (com.google.android.webview) is enabled or not.
  * 
@@ -59,6 +104,7 @@ function getAndroidWebViewPackageInfo() {
  * 
  * @returns {Promise<{ packageName: string, versionName: string, versionCode: number }>}
  */
+   
 function getCurrentWebViewPackageInfo() {
   return promisifyCordovaExec('getCurrentWebViewPackageInfo');
 }
@@ -71,12 +117,12 @@ function getCurrentWebViewPackageInfo() {
  * 
  * @returns {Promise<void>}
  */
-function openGooglePlayPage(packageName) {
+function openApplicationMarketPage(packageName) {
   if (typeof packageName == 'string') {
-    return promisifyCordovaExec('openGooglePlayPage', [packageName]);
+    return promisifyCordovaExec('openApplicationMarketPage', [packageName]);
   } else {
     return getCurrentWebViewPackageInfo().then(function (packageInfo) {
-      return promisifyCordovaExec('openGooglePlayPage', [packageInfo.packageName]);
+      return promisifyCordovaExec('openApplicationMarketPage', [packageInfo.packageName]);
     });
   }
 }
@@ -86,5 +132,8 @@ module.exports = {
   isAndroidWebViewEnabled: isAndroidWebViewEnabled,
   getAndroidWebViewPackageInfo: getAndroidWebViewPackageInfo,
   getCurrentWebViewPackageInfo: getCurrentWebViewPackageInfo,
-  openGooglePlayPage: openGooglePlayPage
+  openApplicationMarketPage: openApplicationMarketPage,
+  isConformingToPreRequisites: isConformingToPreRequisites,
+  setPreRequisitesAndroid: setPreRequisitesAndroid,
+  setPreRequisitesiOS: setPreRequisitesiOS
 }
