@@ -9,7 +9,7 @@ of not the plugin will direct the user for installing or upgrading the missing c
 
 In most cases when dependencies as such are missing the user will probably will be displyed with the white screen of death for your Cordova applications. 
 
-a great thanks to the contribution of ideas to cordova-plugin-webview-checker at https://github.com/NoNameProvided/cordova-plugin-webview-checker
+a great thanks to the contribution of ideas to [cordova-plugin-webview-checker](https://github.com/NoNameProvided/cordova-plugin-webview-checker)
 
 ## Installation
 
