@@ -22,11 +22,17 @@ cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-
 **Add the following snippet into your index.html**
 ```
 <script lang="javascript">
-    function onDevReady()
-    {
-        plugins.prerequisitesChecker.setPreRequisitesAndroid("24");
-        plugins.prerequisitesChecker.isConformingToPreRequisites("Ooopps, its seems something is missing, please install from application market");
-     }
+    var requisites = 
+            {
+                androidApiVersion : "24" ,
+                iosApiVersion : " ",
+                applicationStoreRedirectMessage : "Ooopps, its seems something is missing, please install from application market"
+            };
+    
+    function onDevReady(){
+        plugins.prerequisitesChecker.isConformingToPreRequisites(requisites);
+    }
+    
     document.addEventListener('deviceready', onDevReady, false);
 </script>
 ```

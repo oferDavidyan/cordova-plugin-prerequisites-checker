@@ -45,17 +45,18 @@ function setPreRequisitesiOS(iosApiVersion)
  * 
  * @returns {Promise<boolean>}
  */
-function isConformingToPreRequisites(applicationStoreRedirectMessage) {
-	
 
-  getCurrentWebViewPackageInfo()
+function isConformingToPreRequisites(requisites) {
+      setPreRequisitesiOS(requisites.iosApiVersion);
+      setPreRequisitesAndroid(requisites.androidApiVersion);
+	    getCurrentWebViewPackageInfo()
       .then(function(packageInfo)
           {
               console.log(packageInfo);
               if(packageInfo.versionCode <= 278512410 && packageInfo.packageName == 'com.android.chrome')
               {
-                if(applicationStoreRedirectMessage)
-                  alert(applicationStoreRedirectMessage);
+                if(requisites.applicationStoreRedirectMessage)
+                  alert(requisites.applicationStoreRedirectMessage);
                 openApplicationMarketPage()
                   .then(function() { console.log('Google Play page has been opened.'); })
                   .catch(function(error) {  });
@@ -73,8 +74,8 @@ function isConformingToPreRequisites(applicationStoreRedirectMessage) {
                               console.log(packageInfo);
                               if(packageInfo.versionCode <= 256410600 && packageInfo.packageName == 'com.google.android.webview')
                               {
-                                if(applicationStoreRedirectMessage)
-                                  alert(applicationStoreRedirectMessage);
+                                if(requisites.applicationStoreRedirectMessage)
+                                  alert(requisites.applicationStoreRedirectMessage);
                                 openApplicationMarketPage()
                                   .then(function() { console.log('Google Play page has been opened.'); })
                                   .catch(function(error) {  });
@@ -154,5 +155,5 @@ module.exports = {
   openApplicationMarketPage: openApplicationMarketPage,
   isConformingToPreRequisites: isConformingToPreRequisites,
   setPreRequisitesAndroid: setPreRequisitesAndroid,
-  setPreRequisitesiOS: setPreRequisitesiOS
+  setPreRequisitesiOS: setPreRequisitesiOS,
 }
