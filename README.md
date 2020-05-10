@@ -81,8 +81,10 @@ Every Android release since Android 4.4 (KitKat) comes pre-installed with Androi
 
 ### isConformingToPreRequisites(requisites)
 
-Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
-
+Set requisites for application,
+Recive object with 3 attributes -> [androidApiVersion,iosApiVersion,applicationStoreRedirectMessage],
+The two first attributes is the minimal version of the device(one of the two can be empty,according to device),
+The third parmeter is the message alertd on device that doesn't meets the requirements.
 ```js
     var requisites = 
             {
