@@ -26,7 +26,7 @@ cordova plugin add https://github.com/oferDavidyan/cordova-plugin-prerequisites-
     var requisites = 
             {
                 androidApiVersion : "24" ,
-                iosApiVersion : " ",
+                iosApiVersion : "13.4.1",
                 applicationStoreRedirectMessage : "Ooopps, its seems something is missing, please install from application market"
             };
     
@@ -79,37 +79,20 @@ Every Android release since Android 4.4 (KitKat) comes pre-installed with Androi
 ## API
 
 
-### setPreRequisitesAndroid(androidApiVersion?: string))
+### isConformingToPreRequisites(requisites)
 
 Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
 
 ```js
-plugins.preRequisitesChecker.setPreRequisitesAndroid("24");
-```
+    var requisites = 
+            {
+                androidApiVersion : "#andriod_version_number" ,
+                iosApiVersion :     "#ios_version_number",
+                applicationStoreRedirectMessage : "your_alert_message"
+            };
+            
+plugins.preRequisitesChecker.isConformingToPreRequisites(requisites)
 
---- 
-
-
-### setPreRequisitesIOS(iOSApiVersion?: string)
-
-Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
-
-```js
-plugins.preRequisitesChecker.setPreRequisitesiOS("13.4.1");
-```
---- 
-
-
-
-
-### isConformingToPreRequisites()
-
-Returns a promise which will be resolved to `true` if the Android System Webview is enabled or `false` otherwise.
-
-```js
-plugins.preRequisitesChecker.isConformingToPreRequisites()
-  .then(function(enabled) { console.log(enabled); })
-  .catch(function(error) { console.error(error); });
 ```
 
 > **Note:** Technically all Android phone has the Android System WebView installed but when it's disabled it will default to the version shipped with the phone. So you should determine a minimum required version and use `plugins.preRequisitesChecker.getCurrentWebViewPackageInfo()` function to check if the installed version is higher or not.
